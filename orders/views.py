@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import Order, Entry
-from .forms import OrderForm
+from .forms import OrderForm, EntryForm
 
 # Create your views here.
 def orders(request):
@@ -20,3 +20,19 @@ def orders(request):
         'form': form,
     }
     return render(request, 'orders.html', context=context)
+
+def order(request, id):
+
+    if request.method == 'POST':
+        form = EntryForm(request.POST)
+        if form.is_valid():
+            form.save()
+    else:
+        form = EntryForm(initial={'orderID': id})
+
+    entries = Entry.objects.filter(orderID=id)
+    context = {
+        'entries': entries,
+        'form': form,
+    }
+    return render(request, 'order.html', context=context)

@@ -19,10 +19,10 @@
                         <input type="submit" value="Submit">
                     </form>
                     
-                    {% for order in orders %}
-                        <h2 class="mb-5">{{ order.title }}</h2>
+                    {% for entry in entries %}
+                        <h2 class="mb-5">{{ entry.article }}</h2>
                         <div class="description">
-                            {{ order.id }}
+                            div
                         </div>
                     {% endfor %}
 
