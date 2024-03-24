@@ -33,6 +33,6 @@ def order(request, id):
     entries = Entry.objects.filter(orderID=id)
     context = {
         'entries': entries,
-        'form': form,
+        'form': form.as_div(),
     }
     return render(request, 'order.html', context=context)
