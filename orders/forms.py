@@ -9,6 +9,16 @@ class OrderForm(forms.ModelForm):
 class EntryForm(forms.ModelForm):
     class Meta:
         model = Entry
-        fields = ['orderID', 'first_name', 'last_name', 
-        'club', 'article', 'size', 'additional_notes', 'quantity', 
-        'colour', 'price', 'total_price', 'discounted_price']
+        #fields = '__all__'
+        exclude = ['total_price', 'discounted_price']
+        labels = {
+            'first_name': 'Nome',
+            'last_name': 'Cognome',
+            'club': 'Sala',
+            'article': 'Articolo',
+            'size': 'Taglia',
+            'additional_notes': 'Note',
+            'quantity': 'Quantità',
+            'colour': 'Colore',
+            'price': 'Prezzo',
+        }

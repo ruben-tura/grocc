@@ -4,6 +4,9 @@ from django.db import models
 class Order(models.Model):
     title = models.CharField(max_length=100)
 
+    def __str__(self):
+        return self.title
+
 class Entry(models.Model):
     orderID = models.ForeignKey(to="Order", on_delete=models.CASCADE)
     first_name = models.CharField(max_length=100)
@@ -15,5 +18,8 @@ class Entry(models.Model):
     quantity = models.IntegerField()
     colour = models.CharField(max_length=20)
     price = models.DecimalField(max_digits=7 ,decimal_places=2)
-    total_price = models.DecimalField(max_digits=7 ,decimal_places=2)
-    discounted_price = models.DecimalField(max_digits=7 ,decimal_places=2)
+    total_price = models.DecimalField(max_digits=7 ,decimal_places=2, blank=True, default=0)
+    discounted_price = models.DecimalField(max_digits=7 ,decimal_places=2, blank=True, default=0)
+
+    def __str__(self):
+        return self.first_name + ' ' + self.last_name + ', ' + self.article
