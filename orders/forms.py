@@ -9,4 +9,6 @@ class OrderForm(forms.ModelForm):
 class EntryForm(forms.ModelForm):
     class Meta:
         model = Entry
-        fields = ['orderID', 'article', 'quantity', 'colour', 'price']
+        fields = ['orderID', 'first_name', 'last_name', 
+        'club', 'article', 'size', 'additional_notes', 'quantity', 
+        'colour', 'price', 'total_price', 'discounted_price']
