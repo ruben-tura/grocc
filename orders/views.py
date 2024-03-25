@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Order, Entry
 from .forms import OrderForm, EntryForm
 
@@ -38,3 +38,9 @@ def order(request, id):
         'form': form.as_div(),
     }
     return render(request, 'order.html', context=context)
+
+def delete_object_function(request, id, orderID):
+    ob = Entry.objects.get(id=id)
+    current_url = '/orders/' + str(orderID)
+    ob.delete()
+    return redirect(current_url)
