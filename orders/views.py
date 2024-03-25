@@ -31,8 +31,10 @@ def order(request, id):
         form = EntryForm(initial={'orderID': id})
 
     entries = Entry.objects.filter(orderID=id)
+    current_order = Order.objects.get(id=id)
     context = {
         'entries': entries,
+        'current_order': current_order,
         'form': form.as_div(),
     }
     return render(request, 'order.html', context=context)

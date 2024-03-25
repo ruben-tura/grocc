@@ -1,16 +1,9 @@
 {% extends "base_generic.html" %}
-
+        {% block title %} - {{ current_order.title }}{% endblock %}
         {% block content %}
         <div class="container">
             <div class="row">
-                <div class="col-8 mx-auto mt-5">
-
-                    <form action="" method="post" novalidate>
-                        {% csrf_token %}
-                        {{ form }}
-                        <input type="submit" value="Submit">
-                    </form>
-
+                <div>
                     <table class="table table-hover">
                         <thead>
                             <tr class="table-primary">
@@ -45,12 +38,14 @@
                             {% endfor %}
                           </tbody>
                     </table>
-
+                    <form action="" method="post" novalidate>
+                        {% csrf_token %}
+                        {{ form }}
+                        <input type="submit" value="Submit">
+                    </form>
                 </div>
             </div>
         </div>
-
         {% endblock %}
-
     </body>
 </html>
