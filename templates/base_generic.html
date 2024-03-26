@@ -29,7 +29,7 @@
             <ul class="navbar-nav d-flex ms-auto">
               {% if user.is_authenticated %}
               <li class="nav-item">
-                <span class="nav-link navbar-text" href="#">Ciao {{ user.username }}!</span>
+                <span class="nav-link navbar-text" href="#">Ciao {{ user.first_name }}!</span>
               </li>
               <li class="nav-item">
                 <form action="{% url 'logout' %}" method="post">
