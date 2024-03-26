@@ -15,7 +15,7 @@ class Entry(models.Model):
     club = models.CharField(max_length=100)
     article = models.CharField(max_length=100)
     size = models.CharField(max_length=20, blank=True, default='M')
-    additional_notes = models.CharField(max_length=200, blank=True, default='')
+    additional_notes = models.CharField(max_length=1000, blank=True, default='')
     quantity = models.IntegerField(default=1)
     colour = models.CharField(max_length=20, blank=True, default='nero')
     price = models.DecimalField(max_digits=7 ,decimal_places=2)
