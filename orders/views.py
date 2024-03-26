@@ -28,7 +28,14 @@ def order(request, id):
         if form.is_valid():
             form.save()
     else:
-        form = EntryForm(initial={'orderID': id})
+        if request.user.is_authenticated:
+            form = EntryForm(initial={
+                'orderID': id, 
+                'first_name': request.user.first_name,
+                'last_name': request.user.last_name
+            })
+        else:
+            form = EntryForm(initial={'orderID': id})
 
     entries = Entry.objects.filter(orderID=id)
     current_order = Order.objects.get(id=id)
